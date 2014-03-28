@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Ecarei::Application.config.secret_key_base = 'e328e4e59a7a374dd140275ea53e0483f7388146db7e55adacdfe12967a6177f18246c9e5e8228b6aaf6c64b45f2a22935152ff8fb92811f4ada5f900938f0c1'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Ecarei::Application.config.secret_key_base = secure_token

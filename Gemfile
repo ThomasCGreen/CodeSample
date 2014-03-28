@@ -3,6 +3,26 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'guard-bundler'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem "faker"
+  gem "capybara"
+end
+
+group :development do
+  gem 'ruby_gntp'
+end
+
+# Uncomment this line on Linux.
+ gem 'libnotify'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
