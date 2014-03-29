@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.3'
 
 group :development, :test do
+  gem 'guard'
   gem 'rspec-rails'
   gem 'guard-bundler'
   gem 'guard-rspec'
@@ -21,7 +22,7 @@ group :development do
 end
 
 # Uncomment this line on Linux.
- gem 'libnotify'
+# gem 'libnotify'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
