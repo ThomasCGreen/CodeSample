@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path, notice: "Welcome back #{user.first_name}."
     else
-      # User doe not exist or password was invalid
+      # User does not exist or password was invalid
       flash[:alert] = 'Invalid email or password'
       render :login
     end
