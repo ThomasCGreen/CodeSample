@@ -80,7 +80,7 @@ feature 'User Authentication' do
 
     expect(page).to have_text("#{@user.email} has been logged out.")
     expect(page).to_not have_text("Welcome back #{@user.first_name}")
-    expect(page).to_not have_text('The following are resources you can explore')
+    expect(page).to_not have_text('following are resources you can explore')
     expect(page).to_not have_text("Signed in as #{@user.email}")
   end
 end
