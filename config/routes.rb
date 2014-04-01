@@ -22,6 +22,9 @@ Ecarei::Application.routes.draw do
   delete '/logout',
          to: 'sessions#destroy'
 
+  get '/display',
+      to: 'displays#main'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

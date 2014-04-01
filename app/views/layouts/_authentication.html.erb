@@ -1,4 +1,5 @@
 <% if current_user %>
+    <br />
     Signed in as <%= current_user.email %><br />
     <%= link_to 'Log Out', logout_path, method: :delete %>
 <% else %>
