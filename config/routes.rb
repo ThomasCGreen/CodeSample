@@ -8,6 +8,10 @@ Ecarei::Application.routes.draw do
 
   root to: 'welcome#index'
 
+  resources :users,
+            only: [:new, :create],
+            path_names: { new: 'signup' }
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

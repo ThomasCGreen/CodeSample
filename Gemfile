@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.3'
+gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'guard'
@@ -15,6 +16,7 @@ end
 group :test do
   gem "faker"
   gem "capybara"
+  gem 'shoulda-matchers'
 end
 
 group :development do

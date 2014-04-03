@@ -8,7 +8,16 @@
 </head>
 <body>
 
-<%= yield %>
+<% flash.each do |type, message| %>
+    <div class='flash' id='<%= type %>'>
+      <%= message %>
+    </div>
+<% end %>
+
+<div class='container'>
+  <%= yield %>
+  <%= render :partial => 'layouts/authentication' %>
+</div>
 
 </body>
 </html>
