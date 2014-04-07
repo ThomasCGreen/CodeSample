@@ -8,6 +8,6 @@ feature 'Home Page' do
 
   scenario 'Home Page has link for Creating a New Account' do
     visit '/'
-    expect(page).to have_content('Click Here to Create a New Account')
+    expect(page).to have_content('Sign Up')
   end
 end

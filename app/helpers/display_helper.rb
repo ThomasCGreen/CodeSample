@@ -9,6 +9,7 @@ module DisplayHelper
                     subcategories(category.categories),
                 id: link_id
     )
+
   end
 
   def subcategories(categories)
@@ -101,3 +102,18 @@ module DisplayHelper
     result.html_safe
   end
 end
+
+__END__
+<li>
+  <% category = Category.where(id: id).first %>
+      <%= category.title %>
+  <%= link_to 'Add Category',
+                  new_category_category_path(category_id: category.id) %>
+      <% sub_categories = Category.where(category_id: id) %>
+  <% if sub_categories.count > 0 %>
+      <ul>
+      <% sub_categories.each { |sub_category| category_helper(sub_category.id) } %>
+      </ul>
+      <% end %>
+    </li>
+      <% end %>
