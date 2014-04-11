@@ -1,6 +1,8 @@
 class CategoriesController < ApplicationController
   def new
-    @category = Category.new(category_id: params[:category_id])
+    upper_level_category = Category.find(params[:category_id])
+    @category = Category.new
+    @category.category_id = upper_level_category.id
   end
 
   def create
