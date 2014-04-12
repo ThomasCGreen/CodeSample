@@ -32,6 +32,9 @@ Ecarei::Application.routes.draw do
               only: [:new, :create]
   end
 
+  get '/categories/:category_id/businesses/show',
+      to: 'businesses#show', as: :show_businesses
+
   resources :businesses,
     only: [:new, :create]
 

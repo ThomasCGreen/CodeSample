@@ -1,0 +1,40 @@
+<h1>'<%= @owning_category.title %>' Businesses:</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Product</th>
+    <th>Phone</th>
+    <th>email</th>
+    <th>Website</th>
+    <th>Address</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @business.each do |business| %>
+      <tr id="<%= dom_id(business) %>">
+        <td><%= business.name %></td>
+        <td><%= business.contact %></td>
+        <td><%= business.product %></td>
+        <td><%= business.phone %></td>
+        <td><%= business.email %></td>
+        <td><%= business.website %></td>
+        <td><%= business.street + ', ' +
+                        business.city + ', ' +
+                        business.state + ' ' +
+                        business.zip %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= category = @business[0][:category_id]
+    link_to 'Add Business',
+            new_category_business_path(category),
+            class: 'btn btn-mini' %>
+<%= link_to 'Return to Resources',
+            display_path,
+            class: 'btn btn-mini' %>
