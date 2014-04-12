@@ -23,6 +23,10 @@ end
 
 group :development do
   gem 'ruby_gntp'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
 end
 
 # Uncomment this line on Linux.
