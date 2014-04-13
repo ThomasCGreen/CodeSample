@@ -12,6 +12,16 @@ Ecarei::Application.routes.draw do
             only: [:new, :create],
             path_names: { new: 'signup' }
 
+  get '/login',
+      to: 'sessions#login',
+      as: 'login'
+
+  post '/login',
+       to: 'sessions#create'
+
+  delete '/logout',
+         to: 'sessions#destroy'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

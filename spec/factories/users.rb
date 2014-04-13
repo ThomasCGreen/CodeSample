@@ -2,16 +2,17 @@
 
 FactoryGirl.define do
   factory :user do
-    first_name "MyString"
-    last_name "MyString"
-    email "MyString"
-    password_digest "MyString"
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    email { Faker::Internet.email }
+    password { Faker::Internet.password }
+    password_confirmation { password }
     member_since "2014-03-29 05:03:47"
     expires "2014-03-29 05:03:47"
-    street "MyString"
-    city "MyString"
-    state "MyString"
-    zip "MyString"
-    cell_phone "MyString"
+    street { Faker::Address.street_address }
+    city { Faker::Address.city }
+    state { Faker::Address.state_abbr }
+    zip { Faker::Address.zip }
+    cell_phone { Faker::PhoneNumber.cell_phone }
   end
 end

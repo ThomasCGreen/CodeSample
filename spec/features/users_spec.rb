@@ -24,4 +24,60 @@ feature 'User Authentication' do
     expect(page).to have_text('Thank you for signing up, Tom!')
     expect(page).to have_text('Signed in as TomG@AccelHomeBuyers.com')
   end
+
+  scenario 'allows existing user to log in' do
+    @user = FactoryGirl.create(:user)
+
+    visit '/'
+
+    expect(page).to have_link('Log In')
+
+    click_link 'Log In'
+
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+
+    click_button 'Sign In'
+
+    expect(page).to have_text("Welcome back #{@user.first_name}")
+    expect(page).to have_text("Signed in as #{@user.email}")
+  end
+
+  scenario 'does not allow existing users to login with invalid password' do
+    @user = FactoryGirl.create(:user)
+
+    visit '/'
+
+    expect(page).to have_link('Log In')
+
+    click_link 'Log In'
+
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: 'WrongPassword'
+
+    click_button 'Sign In'
+
+    expect(page).to have_text('Invalid email or password')
+  end
+
+  scenario 'allow a logged in user to log out' do
+    @user = FactoryGirl.create(:user)
+
+    # Log the user in
+    visit login_path
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: @user.password
+    click_button 'Sign In'
+
+    visit '/'
+
+    expect(page).to have_text("Signed in as #{@user.email}")
+    expect(page).to have_link('Log Out')
+
+    click_link 'Log Out'
+
+    expect(page).to have_text("#{@user.email} has been logged out.")
+    expect(page).to_not have_text("Welcome back #{@user.first_name}")
+    expect(page).to_not have_text("Signed in as #{@user.email}")
+  end
 end
