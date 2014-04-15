@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(user_params)
+    @category = Category.new(category_params)
     if @category.save
       session[:category_id] = @category.id
       redirect_to display_path, notice:
@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def user_params
+  def category_params
     params.require(:category).permit(:title)
   end
 end
