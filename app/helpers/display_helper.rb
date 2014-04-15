@@ -36,19 +36,19 @@ module DisplayHelper
   end
 
   def display_businesses(category)
-    business = category.businesses
-    if business.count == 0
+    businesses = category.businesses
+    if businesses.count == 0
       return ''
     else
-      business_table(business)
+      business_table(businesses)
     end
   end
 
-  def business_table(business)
+  def business_table(businesses)
     content_tag(:table,
                 content_tag(:thead,
                             business_headers
-                ) + content_tag(:tbody, business_table_lines(business))
+                ) + content_tag(:tbody, business_table_lines(businesses))
     )
   end
 
