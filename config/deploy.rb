@@ -25,7 +25,7 @@ set :tmp_dir, '/home/ecarei/tmp'
 set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -56,14 +56,4 @@ namespace :deploy do
       # end
     end
   end
-
 end
-
-namespace :deploy do
-  desc "Symlinks the database.yml"
-  task :symlink_db, :roles => :app do
-    run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
-  end
-end
-
-after 'deploy:update_code', 'deploy:symlink_db'
