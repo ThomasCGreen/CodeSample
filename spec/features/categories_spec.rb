@@ -15,6 +15,7 @@ feature 'Recommendations Categories' do
 
     click_button 'Sign In'
 
+    expect(page).to have_text('Resources')
     expect(page).to have_text('Add Category')
 
     click_link 'Add Category'
