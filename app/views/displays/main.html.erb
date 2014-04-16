@@ -1,7 +1,7 @@
 <h1>Welcome to eCAREI Resource Pages!</h1>
 
-<h2>The following are resources you can explore by expanding:</h2>
+<h2>The following are resources you can explore:</h2>
 
-<li>Recommendations <%= link_to 'Add Category', new_category_path %></li>
-
-
+<ul>
+<%= category_helper(@category) %>
+</ul>

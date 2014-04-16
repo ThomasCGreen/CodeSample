@@ -11,6 +11,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-rubocop'
   gem 'factory_girl_rails'
+  gem 'byebug'
 end
 
 group :test do

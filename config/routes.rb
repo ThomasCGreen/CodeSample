@@ -25,8 +25,10 @@ Ecarei::Application.routes.draw do
   get '/display',
       to: 'displays#main'
 
-  resources :categories,
-            only: [:new, :create]
+  resources :categories do
+    resources :categories,
+              only: [:new, :create]
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
