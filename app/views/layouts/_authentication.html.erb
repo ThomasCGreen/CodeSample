@@ -1,8 +1,23 @@
 <% if current_user %>
-    <br />
-    Signed in as <%= current_user.email %><br />
-    <%= link_to 'Log Out', logout_path, method: :delete %>
+    <% navigation_dropdown_text = "Signed in as #{current_user.email}" %>
 <% else %>
-    <%= link_to 'Log In', login_path %><br />
-    <%= link_to 'Click Here to Create a New Account', new_user_path %>
+    <% navigation_dropdown_text = "Signup / Login" %>
 <% end %>
+
+<ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <%= navigation_dropdown_text %>
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <% if current_user %>
+          <li class="divider"></li>
+          <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+      <% else %>
+          <li><%= link_to 'Sign Up', new_user_path %></li>
+          <li><%= link_to 'Log In', login_path %></li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
