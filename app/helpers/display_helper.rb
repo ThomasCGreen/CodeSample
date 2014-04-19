@@ -37,11 +37,7 @@ module DisplayHelper
 
   def display_businesses(category)
     businesses = category.businesses
-    if businesses.count == 0
-      return ''
-    else
-      business_table(businesses)
-    end
+    category.businesses.any? ? business_table(businesses) : ''
   end
 
   def business_table(businesses)

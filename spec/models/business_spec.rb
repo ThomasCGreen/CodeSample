@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Business do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of(:phone) }
+
+  it { should belong_to :category }
 end
