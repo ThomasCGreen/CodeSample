@@ -12,6 +12,7 @@ en:
       new: "New"
       edit: "Edit"
       addcategory: "Add Category"
+      addbusiness: "Add Business"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"

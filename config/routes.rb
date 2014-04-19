@@ -28,7 +28,12 @@ Ecarei::Application.routes.draw do
   resources :categories do
     resources :categories,
               only: [:new, :create]
+    resources :businesses,
+              only: [:new, :create]
   end
+
+  resources :businesses,
+    only: [:new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
