@@ -4,9 +4,9 @@ feature 'User Authentication' do
   scenario 'allows a user to create a new account' do
     visit '/'
 
-    expect(page).to have_link('Click Here to Create a New Account')
+    expect(page).to have_link('Sign Up')
 
-    click_link 'Click Here to Create a New Account'
+    click_link 'Sign Up'
 
     fill_in 'First name', with: 'Tom'
     fill_in 'Last name', with: 'Green'
