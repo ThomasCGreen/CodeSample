@@ -3,6 +3,7 @@ class BusinessesController < ApplicationController
     owning_category = Category.find(params[:category_id])
     @business = Business.new
     @business.category_id = owning_category.id
+    @owning_category_title = owning_category.title
   end
 
   def create
