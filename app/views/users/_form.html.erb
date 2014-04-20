@@ -1,7 +1,8 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => {:class => 'form-horizontal'} do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.class.name %> from being saved:</h2>
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.class.name %> from being
+            saved:</h2>
 
           <ul>
             <% @user.errors.full_messages.each do |msg| %>
@@ -10,49 +11,70 @@
           </ul>
         </div>
     <% end %>
+    <div class="control-group">
+      <%= f.label :first_name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :first_name, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :last_name, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :last_name, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :email, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :password, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :password_confirmation, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :password_confirmation, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :street, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :street, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :city, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :city, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :state, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :state, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :zip, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :zip, :class => 'text_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :cell_phone, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :cell_phone, :class => 'text_field' %>
+      </div>
+    </div>
 
-    <div class="field">
-      <%= f.label :first_name %><br>
-      <%= f.text_field :first_name %>
-    </div>
-    <div class="field">
-      <%= f.label :last_name %><br>
-      <%= f.text_field :last_name %>
-    </div>
-    <div class="field">
-      <%= f.label :email %><br>
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
-      <%= f.label :password_confirmation %><br>
-      <%= f.password_field :password_confirmation %>
-    </div>
-    <div class="field">
-      <%= f.label :street %><br>
-      <%= f.text_field :street %>
-    </div>
-    <div class="field">
-      <%= f.label :city %><br>
-      <%= f.text_field :city %>
-    </div>
-    <div class="field">
-      <%= f.label :state %><br>
-      <%= f.text_field :state %>
-    </div>
-    <div class="field">
-      <%= f.label :zip %><br>
-      <%= f.text_field :zip %>
-    </div>
-    <div class="field">
-      <%= f.label :cell_phone %><br>
-      <%= f.text_field :cell_phone %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit 'Sign Up' %>
+    <div class="form-actions">
+      <%= f.submit 'Sign Up', :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  new_user_path, :class => 'btn' %>
     </div>
 <% end %>
