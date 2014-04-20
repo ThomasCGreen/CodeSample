@@ -2,11 +2,10 @@ module DisplayHelper
   def category_helper(category)
     link_id = category.title + '_' + category.id.to_s
     content_tag(:li,
-                category.title.html_safe +
-                    " ".html_safe +
-                    new_category_link(category) +
+                category_title_with_optional_link(category) +
+                    show_businesses_link(category) +
+                    new_category_link(category) + ' ' +
                     new_business_link(category) +
-                    display_businesses(category).html_safe +
                     subcategories(category.categories),
                 id: link_id
     )
@@ -21,18 +20,39 @@ module DisplayHelper
     )
   end
 
+  def category_title_with_optional_link(category)
+    if category.businesses.count > 0
+      (link_to(category.title,
+               show_businesses_path(category.id).html_safe,
+               class: 'display-link'
+      ) + ' ').html_safe
+    else
+      (category.title + ' ').html_safe
+    end
+  end
+
+  def show_businesses_link(category)
+    return ''.html_safe unless category.businesses.count > 0
+    link_to(t('.showbusinesses',
+              default: t("helpers.links.showbusinesses")),
+            show_businesses_path(category.id).html_safe,
+            class: 'ui-button-text button_text').html_safe +
+        ' '.html_safe
+  end
+
   def new_category_link(category)
     link_to(t('.addcategory',
               default: t("helpers.links.addcategory")),
             new_category_category_path(category.id).html_safe,
-            class: 'btn btn-mini').html_safe
+            class: 'ui-button-text button_text').html_safe
   end
 
   def new_business_link(category)
+    return ''.html_safe unless category.businesses.count == 0
     link_to(t('.addbusiness',
               default: t("helpers.links.addbusiness")),
             new_category_business_path(category.id).html_safe,
-            class: 'btn btn-mini').html_safe
+            class: 'ui-button-text button_text').html_safe
   end
 
   def display_businesses(category)

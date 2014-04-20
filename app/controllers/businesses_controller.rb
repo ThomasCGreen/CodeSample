@@ -1,16 +1,24 @@
 class BusinessesController < ApplicationController
   def new
-    @business = Business.new(category_id: params[:category_id])
+    owning_category = Category.find(params[:category_id])
+    @business = Business.new
+    @business.category_id = owning_category.id
   end
 
   def create
     @business = Business.new(business_params)
+    @owning_category = @business.category_id
     if @business.save
-      redirect_to display_path, notice:
+      redirect_to show_businesses_path(@owning_category), notice:
           "New Business Created: #{@business.name}"
     else
       render :new
     end
+  end
+
+  def show
+    @owning_category = Category.find(params[:category_id])
+    @business = Business.where(category_id: @owning_category)
   end
 
   private

@@ -13,6 +13,7 @@ en:
       edit: "Edit"
       addcategory: "Add Category"
       addbusiness: "Add Business"
+      showbusinesses: "Show Businesses"
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"
