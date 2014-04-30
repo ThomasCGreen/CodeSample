@@ -3,22 +3,10 @@ require 'spec_helper'
 feature 'Reviews' do
   scenario 'allows user to create a review' do
     @user = FactoryGirl.create(:user)
-    @category = Category.new
-    @category.title = "Resources"
-    @category.save
-
-    @category1 = Category.new
-    @category1.title = "Flooring"
-    @category1.category_id = @category.id
-    @category1.save
-
-    @category2 = Category.new
-    @category2.title = 'Hardwood'
-    @category2.category_id = @category1.id
-    @category2.save
-
-    @business = FactoryGirl.create(:business)
-    @business.category_id = @category1.id
+    resources = FactoryGirl.create(:category, title: 'Resources', category_id: nil)
+    flooring = FactoryGirl.create(:category, title: 'Flooring', category_id: resources.id)
+    hardwood = FactoryGirl.create(:category, title: 'Hardwood', category_id: flooring.id)
+    FactoryGirl.create(:business, category_id: flooring.id)
 
     visit '/'
     click_link 'Log In'
@@ -28,7 +16,7 @@ feature 'Reviews' do
 
     click_button 'Sign In'
 
-    within("//li[@id='#{@category1.title}_#{@category1.id}']") do
+    within("//li[@id='#{flooring.title}_#{flooring.id}']") do
       first(:link, "Show Businesses").click
     end
 
