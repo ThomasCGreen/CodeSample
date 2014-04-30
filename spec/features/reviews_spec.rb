@@ -22,28 +22,12 @@ feature 'Reviews' do
 
     click_link 'Add Review'
 
-    fill_in 'Business', with: business_name
-    fill_in 'Contact Name', with: contact_name
-    fill_in 'Service or Product', with: product_name
-    fill_in 'Phone Number', with: phone_number
-    fill_in 'Website', with: website
-    fill_in 'email', with: email
-    fill_in 'Street', with: street
-    fill_in 'City', with: city
-    fill_in 'State', with: state
-    fill_in 'Zip', with: zip
+    select '3', from: 'Business Rating'
+    fill_in 'Review Text', with: 'Random Text'
 
     click_button 'Create New Review'
 
-    expect(page).to have_text(business_name)
-    expect(page).to have_text(contact_name)
-    expect(page).to have_text(product_name)
-    expect(page).to have_text(phone_number)
-    expect(page).to have_text(website)
-    expect(page).to have_text(email)
-    expect(page).to have_text(street)
-    expect(page).to have_text(city)
-    expect(page).to have_text(state)
-    expect(page).to have_text(zip)
+    expect(page).to have_text('3')
+    expect(page).to have_text('Random Text')
   end
 end

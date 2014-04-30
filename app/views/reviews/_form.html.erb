@@ -1,0 +1,35 @@
+<%= form_for @review,
+             url: business_reviews_path(@review.business_id),
+             html: {class:'form-horizontal'} do |f| %>
+    <% if @review.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review.errors.count, "error") %> prohibited this <%= @review.class.name %> from being saved:</h2>
+
+          <ul>
+            <% @review.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :rating, 'Business Rating (1-5)', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :rating, @ratings, :class => 'number_field' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, 'Review Text', :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :description, cols: 60, rows: 10, :class => 'text_area' %>
+      </div>
+    </div>
+
+
+    <%= f.hidden_field :business_id %>
+    <div class="actions">
+        <%= f.submit 'Create New Review' %>
+    </div>
+
+<% end %>

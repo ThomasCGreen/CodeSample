@@ -1,0 +1,68 @@
+<h1>Reviews for '<%= @owning_business.name %>':</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Product</th>
+    <th>Phone</th>
+    <th>email</th>
+    <th>Website</th>
+    <th>Address</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr id="<%= dom_id(@owning_business) %>">
+    <td><%= @owning_business.name %></td>
+    <td><%= @owning_business.contact %></td>
+    <td><%= @owning_business.product %></td>
+    <td><%= @owning_business.phone %></td>
+    <td><%= @owning_business.email %></td>
+    <td><%= @owning_business.website %></td>
+    <td><%= @owning_business.street + ', ' +
+                    @owning_business.city + ', ' +
+                    @owning_business.state + ' ' +
+                    @owning_business.zip %></td>
+    <td>
+      <%= link_to "Add Review", new_business_review_path(@owning_business.id) %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Review Date</th>
+    <th>Rating</th>
+    <th>Review</th>
+    <th>Reviewer</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% Review.where(business_id: @owning_business.id).order('updated_at DESC').each do |review| %>
+      <tr id="<%= dom_id(review) %>">
+        <td><%= review.updated_at.to_date %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.description %></td>
+        <td>
+          <% user = User.where(id: review.user_id).first %>
+          <%= user.first_name %>
+          <%= user.last_name %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= category = @business[0][:category_id]
+    link_to 'Add Business',
+            new_category_business_path(category),
+            class: 'btn btn-mini' %>
+<%= link_to 'Return to Resources',
+            display_path,
+            class: 'btn btn-mini' %>

@@ -10,6 +10,8 @@
     <th>email</th>
     <th>Website</th>
     <th>Address</th>
+    <th></th>
+    <th></th>
   </tr>
   </thead>
 
@@ -26,6 +28,14 @@
                         business.city + ', ' +
                         business.state + ' ' +
                         business.zip %></td>
+        <td>
+          <%= link_to "Add Review", new_business_review_path(business.id) %>
+          </td>
+        <td>
+          <% if test = Review.exists?(business_id: business.id) %>
+              <%= link_to "Show Reviews", show_reviews_path(business.id) %>
+          <% end %>
+        </td>
       </tr>
   <% end %>
   </tbody>
