@@ -22,7 +22,8 @@ module DisplayHelper
 
   def category_title_with_optional_link(category)
     if category.businesses.count > 0
-      (link_to(category.title,
+      (link_to((category.title +
+          '(' + category.businesses.count.to_s + ')'),
                show_businesses_path(category.id).html_safe,
                class: 'display-link'
       ) + ' ').html_safe

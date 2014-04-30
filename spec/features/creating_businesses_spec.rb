@@ -44,5 +44,8 @@ feature 'Business Information' do
     expect(page).to have_text(business.city)
     expect(page).to have_text(business.state)
     expect(page).to have_text(business.zip)
+
+    click_link 'Return to Resources'
+    expect(page).to have_text('Flooring(1)')
   end
 end
