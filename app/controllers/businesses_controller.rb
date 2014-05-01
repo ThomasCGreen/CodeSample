@@ -8,6 +8,7 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
+    @business.user_id = session[:user_id]
     @owning_category = @business.category_id
     if @business.save
       redirect_to show_businesses_path(@owning_category), notice:
