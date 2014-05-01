@@ -6,7 +6,7 @@ module DisplayHelper
                     show_businesses_link(category) +
                     new_category_link(category) + ' ' +
                     new_business_link(category) +
-                    subcategories(category.categories),
+                    subcategories(category.categories.order(title: :asc)),
                 id: link_id
     )
   end
