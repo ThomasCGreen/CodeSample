@@ -10,8 +10,7 @@
     <th>email</th>
     <th>Website</th>
     <th>Address</th>
-    <th></th>
-    <th></th>
+    <th>Recommend By:</th>
   </tr>
   </thead>
 
@@ -34,6 +33,13 @@
         <td>
           <% if test = Review.exists?(business_id: business.id) %>
               <%= link_to "Show Reviews", show_reviews_path(business.id) %>
+          <% end %>
+        </td>
+        <td>
+          <% if business.user_id %>
+            <% user = User.find(business.user_id) %>
+            <%= user.first_name %>
+            <%= user.last_name %>
           <% end %>
         </td>
       </tr>
