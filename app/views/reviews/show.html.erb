@@ -1,6 +1,6 @@
 <h1>Reviews for '<%= @owning_business.name %>':</h1>
 
-<table>
+<table class="table table-striped table-responsive">
   <thead>
   <tr>
     <th>Name</th>
@@ -10,6 +10,7 @@
     <th>email</th>
     <th>Website</th>
     <th>Address</th>
+    <th>Recommend By:</th>
     <th></th>
   </tr>
   </thead>
@@ -27,13 +28,20 @@
                     @owning_business.state + ' ' +
                     @owning_business.zip %></td>
     <td>
+      <% if @owning_business.user_id %>
+          <% user = User.find(@owning_business.user_id) %>
+          <%= user.first_name %>
+          <%= user.last_name %>
+      <% end %>
+    </td>
+    <td>
       <%= link_to "Add Review", new_business_review_path(@owning_business.id) %>
     </td>
   </tr>
   </tbody>
 </table>
 
-<table>
+<table id="reviews" class="table table-striped table-responsive">
   <thead>
   <tr>
     <th>Review Date</th>
