@@ -7,7 +7,6 @@ set :rvm_ruby_version, '2.1.0@ecarei'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-set :branch, '68331518_add_review_master'
 
 # Default deploy_to directory is /var/www/my_app
 set :deploy_to, '/home/ecarei/resources.ecarei.com'

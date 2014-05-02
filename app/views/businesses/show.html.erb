@@ -11,6 +11,8 @@
     <th>Website</th>
     <th>Address</th>
     <th>Recommend By:</th>
+    <th></th>
+    <th></th>
   </tr>
   </thead>
 
@@ -28,6 +30,12 @@
                         business.state + ' ' +
                         business.zip %></td>
         <td>
+          <% if business.user_id %>
+              <% user = User.find(business.user_id) %>
+              <%= user.first_name %>
+              <%= user.last_name %>
+          <% end %>
+        </td><td>
           <%= link_to "Add Review", new_business_review_path(business.id) %>
           </td>
         <td>
@@ -35,13 +43,7 @@
               <%= link_to "Show Reviews", show_reviews_path(business.id) %>
           <% end %>
         </td>
-        <td>
-          <% if business.user_id %>
-            <% user = User.find(business.user_id) %>
-            <%= user.first_name %>
-            <%= user.last_name %>
-          <% end %>
-        </td>
+
       </tr>
   <% end %>
   </tbody>
