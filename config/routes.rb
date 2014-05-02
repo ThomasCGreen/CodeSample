@@ -38,6 +38,14 @@ Ecarei::Application.routes.draw do
   resources :businesses,
     only: [:new, :create]
 
+  resources :business do
+    resources :reviews,
+              only: [:new, :create]
+  end
+
+  get '/businesses/:business_id/reviews/show',
+      to: 'reviews#show', as: :show_reviews
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

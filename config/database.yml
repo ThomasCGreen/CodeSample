@@ -19,7 +19,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  database: ecarei_resources
+  username: <%= ENV['ECAREI_DB_USER'] %>
+  password: <%= ENV['ECAREI_DB_PASSWORD'] %>
+  host: 127.0.0.1
+  port: 3306

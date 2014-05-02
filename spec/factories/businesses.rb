@@ -5,7 +5,7 @@ FactoryGirl.define do
     name { Faker::Company.name }
     contact { Faker::Name.name }
     product { Faker::Commerce.product_name }
-    phone { Faker::PhoneNumber }
+    phone { Faker::PhoneNumber.cell_phone }
     website { Faker::Internet.url }
     email { Faker::Internet.email }
     street { Faker::Address.street_address }

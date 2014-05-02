@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
     if @category.save
-      session[:category_id] = @category.id
       redirect_to display_path, notice:
           "New Category Created: #{@category.title}"
     else

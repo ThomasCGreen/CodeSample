@@ -9,6 +9,7 @@ module DisplayHelper
                     subcategories(category.categories),
                 id: link_id
     )
+
   end
 
   def subcategories(categories)
