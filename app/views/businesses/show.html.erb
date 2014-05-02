@@ -1,6 +1,6 @@
 <h1>'<%= @owning_category.title %>' Businesses:</h1>
 
-<table>
+<table class="table table-striped table-responsive">
   <thead>
   <tr>
     <th>Name</th>
@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-  <% @business.each do |business| %>
+  <% @business.order(updated_at: :desc).each do |business| %>
       <tr id="<%= dom_id(business) %>">
         <td><%= business.name %></td>
         <td><%= business.contact %></td>
