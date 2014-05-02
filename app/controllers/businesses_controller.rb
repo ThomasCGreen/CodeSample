@@ -12,7 +12,7 @@ class BusinessesController < ApplicationController
     @owning_category = @business.category_id
     if @business.save
       redirect_to show_businesses_path(@owning_category), notice:
-          "New Business Created: #{@business.name}"
+          "<p class='text-success'>New Business Created: #{@business.name}</p>"
     else
       render :new
     end

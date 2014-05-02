@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       redirect_to display_path, notice:
-          "Thank you for signing up, #{@user.first_name}!"
+          "<p class='text-success'>Thank you for signing up, #{@user.first_name}!</p>"
     else
       render :new
     end

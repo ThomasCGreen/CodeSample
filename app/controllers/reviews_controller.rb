@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @owning_business = Business.find(@review.business_id)
     if @review.save
       redirect_to show_reviews_path(@owning_business), notice:
-          "New Review Created For #{@owning_business.name}"
+          "<p class='text-success'>New Review Created For #{@owning_business.name}<\p>"
     else
       render :new
     end

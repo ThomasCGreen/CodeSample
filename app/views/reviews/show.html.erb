@@ -23,10 +23,7 @@
     <td><%= @owning_business.phone %></td>
     <td><%= @owning_business.email %></td>
     <td><%= @owning_business.website %></td>
-    <td><%= @owning_business.street + ', ' +
-                    @owning_business.city + ', ' +
-                    @owning_business.state + ' ' +
-                    @owning_business.zip %></td>
+    <td><%= business_address(@owning_business) %></td>
     <td>
       <% if @owning_business.user_id %>
           <% user = User.find(@owning_business.user_id) %>

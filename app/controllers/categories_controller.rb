@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to display_path, notice:
-          "New Category Created: #{@category.title}"
+          "<p class='text-success'>New Category Created: #{@category.title}</p>"
     else
       render :new
     end
