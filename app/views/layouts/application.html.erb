@@ -8,13 +8,14 @@
 </head>
 <body>
 
-<% flash.each do |type, message| %>
-    <div class='flash' id='<%= type %>'>
-      <%= message %>
-    </div>
-<% end %>
-
 <div class='container'>
+
+  <% flash.each do |type, message| %>
+      <div class='flash' id='<%= type %>'>
+        <%= message.html_safe %>
+      </div>
+  <% end %>
+
   <%= render :partial => 'layouts/navigation' %>
   <%= yield %>
 </div>
